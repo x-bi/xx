@@ -1,11 +1,11 @@
 import type { Router } from 'vue-router'
 import { useAppStore, useRouteStore, useTabStore } from '@/store'
 import { local } from '@/utils'
+const showProgress = import.meta.env.VITE_COMPRESS_SHOWPROGERSS === 'Y'
 
 const title = import.meta.env.VITE_APP_NAME
 
 export function setupRouterGuard(router: Router) {
-  const appStore = useAppStore()
   const routeStore = useRouteStore()
   const tabStore = useTabStore()
 
@@ -16,7 +16,7 @@ export function setupRouterGuard(router: Router) {
       return false
     }
     // 开始 loadingBar
-    appStore.showProgress && window.$loadingBar?.start()
+    showProgress && window.$loadingBar?.start()
 
     // 判断有无TOKEN,登录鉴权
     const isLogin = Boolean(local.get('accessToken'))
@@ -68,6 +68,6 @@ export function setupRouterGuard(router: Router) {
     // 修改网页标题
     document.title = `${to.meta.title} - ${title}`
     // 结束 loadingBar
-    appStore.showProgress && window.$loadingBar?.finish()
+    showProgress && window.$loadingBar?.finish()
   })
 }

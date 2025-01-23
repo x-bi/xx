@@ -1,24 +1,30 @@
 <script setup lang="ts">
-import { naiveI18nOptions } from '@/utils'
-import { darkTheme } from 'naive-ui'
-import { useAppStore } from './store'
+import type { GlobalThemeOverrides } from 'naive-ui'
 
-const appStore = useAppStore()
+const enva = import.meta.env
 
-const naiveLocale = computed(() => {
-  return naiveI18nOptions[appStore.lang] ? naiveI18nOptions[appStore.lang] : naiveI18nOptions.enUS
-},
-)
+const docEle = ref(document.documentElement)
+if(enva.VITE_COMPRESS_COLORWEAK === 'Y'){
+  docEle.value.classList.toggle('color-weak')
+}
+if(enva.VITE_COMPRESS_GRAY === 'Y'){
+  docEle.value.classList.toggle('gray-mode')
+}
+
+import themeConfig from '@/styles/theme.json'
+const theme = themeConfig as GlobalThemeOverrides
+import { dateZhCN, zhCN } from 'naive-ui'
+
+
 </script>
 
 <template>
   <n-config-provider
-    class="wh-full" inline-theme-disabled :theme="appStore.colorMode === 'dark' ? darkTheme : null"
-    :locale="naiveLocale.locale" :date-locale="naiveLocale.dateLocale" :theme-overrides="appStore.theme"
+    class="wh-full" inline-theme-disabled
+     :theme-overrides="theme" :locale="zhCN" :date-locale="dateZhCN"
   >
     <naive-provider>
       <router-view />
-      <Watermark :show-watermark="appStore.showWatermark" />
     </naive-provider>
   </n-config-provider>
 </template>

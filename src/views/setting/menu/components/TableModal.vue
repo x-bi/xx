@@ -28,7 +28,7 @@ const { bool: submitLoading, setTrue: startLoading, setFalse: endLoading } = use
 const formDefault: AppRoute.RowRoute = {
   name: '',
   path: '',
-  id: -1,
+  id: '-1',
   pid: null,
   title: '',
   requiresAuth: true,

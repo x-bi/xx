@@ -27,12 +27,8 @@ interface ImportMetaEnv {
   readonly VITE_ROUTE_LOAD_MODE: 'static' | 'dynamic'
   /** 首次加载页面 */
   readonly VITE_HOME_PATH: string
-  /** 版权信息 */
-  readonly VITE_COPYRIGHT_INFO: string
   /** 是否自动刷新token */
   readonly VITE_AUTO_REFRESH_TOKEN: 'Y' | 'N'
-  /** 默认语言 */
-  readonly VITE_DEFAULT_LANG: App.lang
   /** 后端服务的环境类型 */
   readonly MODE: ServiceEnvType
 }

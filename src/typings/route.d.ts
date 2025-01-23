@@ -41,9 +41,9 @@ declare namespace AppRoute {
     /* 页面组件地址 */
     componentPath?: string | null
     /* 路由id */
-    id: number
+    id: number | string
     /* 父级路由id，顶级页面为null */
-    pid: number | null
+    pid: number | null | string
   }
 
   /** 单个路由的类型结构(动态路由模式：后端返回此类型结构的路由) */

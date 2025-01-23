@@ -1,10 +1,12 @@
 import type { MenuOption } from 'naive-ui'
 import { router } from '@/router'
-import { staticRoutes } from '@/router/routes.static'
+// import { staticRoutes } from '@/router/routes.static'
 import { fetchUserRoutes } from '@/service'
 import { useAuthStore } from '@/store/auth'
 import { $t, local } from '@/utils'
 import { createMenus, createRoutes, generateCacheRoutes } from './helper'
+import {loadRoutes} from '@/router/routesStatic/index'
+const staticRoutes = await loadRoutes();
 
 interface RoutesStatus {
   isInitAuthRoute: boolean
@@ -38,6 +40,7 @@ export const useRouteStore = defineStore('route-store', {
     },
 
     async initRouteInfo() {
+
       if (import.meta.env.VITE_ROUTE_LOAD_MODE === 'dynamic') {
         const userInfo = local.get('userInfo')
 
@@ -67,6 +70,8 @@ export const useRouteStore = defineStore('route-store', {
 
       // Initialize route information
       const rowRoutes = await this.initRouteInfo()
+      console.log('rowRoutes', rowRoutes);
+
       if (!rowRoutes) {
         window.$message.error($t(`app.getRouteError`))
         return

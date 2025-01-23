@@ -1,0 +1,63 @@
+
+
+export const routes = {
+  order:2,
+  routes: [
+    {
+      name: 'multi',
+      path: '/multi',
+      title: '多级菜单演示',
+      requiresAuth: true,
+      icon: 'icon-park-outline:list',
+      menuType: 'dir',
+      componentPath: null,
+      id: '4',
+      pid: null,
+    },
+    {
+      name: 'multi2',
+      path: '/multi/multi2',
+      title: '多级菜单子页',
+      requiresAuth: true,
+      icon: 'icon-park-outline:list',
+      menuType: 'page',
+      componentPath: '/demo/multi/multi2/index.vue',
+      id: '6',
+      pid: '4',
+    },
+    {
+      name: 'multi2Detail',
+      path: '/multi/multi2/detail',
+      title: '菜单详情页',
+      requiresAuth: true,
+      icon: 'icon-park-outline:list',
+      hide: true,
+      activeMenu: '/multi/multi2',
+      menuType: 'page',
+      componentPath: '/demo/multi/multi2/detail/index.vue',
+      id: '7',
+      pid: '4',
+    },
+    {
+      name: 'multi3',
+      path: '/multi/multi3',
+      title: '多级菜单',
+      requiresAuth: true,
+      icon: 'icon-park-outline:list',
+      menuType: 'dir',
+      componentPath: null,
+      id: '4-5',
+      pid: '4',
+    },
+    {
+      name: 'multi4',
+      path: '/multi/multi3/multi4',
+      title: '多级菜单3-1',
+      requiresAuth: true,
+      icon: 'icon-park-outline:list',
+      componentPath: '/demo/multi/multi3/multi4/index.vue',
+      id: '4-5-1',
+      pid: '4-5',
+    },
+  ]
+ }

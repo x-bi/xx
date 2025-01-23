@@ -1,6 +1,4 @@
 import BackTop from './common/BackTop.vue'
-import Setting from './common/Setting.vue'
-import SettingDrawer from './common/SettingDrawer.vue'
 
 import Breadcrumb from './header/Breadcrumb.vue'
 import CollapaseButton from './header/CollapaseButton.vue'
@@ -23,8 +21,6 @@ export {
   Menu,
   Notices,
   Search,
-  Setting,
-  SettingDrawer,
   TabBar,
   UserCenter,
 }

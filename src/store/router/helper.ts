@@ -37,6 +37,7 @@ export function createRoutes(routes: AppRoute.RowRoute[]) {
 
   // Generate route tree
   resultRouter = arrayToTree(resultRouter) as AppRoute.Route[]
+console.log('resultRouter',resultRouter);
 
   const appRootRoute: RouteRecordRaw = {
     path: '/appRoot',
@@ -132,9 +133,9 @@ function transformAuthRoutesToMenus(userRoutes: AppRoute.Route[]) {
                       path: item.path,
                     },
                   },
-                  { default: () => $t(`route.${String(item.name)}`, item.meta.title) },
+                  { default:()=>{return item.meta.title } },
                 )
-            : () => $t(`route.${String(item.name)}`, item.meta.title),
+            : () => {return item.meta.title },
         key: item.path,
         icon: item.meta.icon ? renderIcon(item.meta.icon) : undefined,
       }

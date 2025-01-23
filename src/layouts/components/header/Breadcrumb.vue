@@ -1,45 +1,42 @@
 <script setup lang="ts">
-import { useAppStore } from '@/store'
+import { clone } from 'radash';
+
 
 const router = useRouter()
 const route = useRoute()
 const routes = computed(() => {
-  return route.matched
+  return clone(route.matched).splice(1)
 })
-const appStore = useAppStore()
+
 </script>
 
 <template>
-  <TransitionGroup v-if="appStore.showBreadcrumb" name="list" tag="ul" style="display: flex; gap:1em;">
-    <n-el
-      v-for="(item) in routes"
-      :key="item.path"
-      tag="li" style="
+  <TransitionGroup name="list" tag="ul"  class="p-b-15px z-999 m-l-16px m-t-1px  p-t-20px bg" style="display: flex; ">
+    <n-el v-for="(item,i) in routes" :key="item.path" tag="li" style="
             color: var(--text-color-2);
             transition: 0.3s var(--cubic-bezier-ease-in-out);
-          "
-      class="flex-center gap-2 cursor-pointer split"
-      @click="router.push(item.path)"
-    >
-      <nova-icon v-if="appStore.showBreadcrumbIcon" :icon="item.meta.icon" />
-      <span class="whitespace-nowrap">{{ $t(`route.${String(item.name)}`, item.meta.title) }}</span>
+          " class="flex-center  cursor-pointer split" @click="router.push(item.path)">
+      <!-- 面包屑图标 -->
+      <!-- <nova-icon :icon="item.meta.icon" /> -->
+      <span  class="whitespace-nowrap">{{ item.meta.title}}</span><span v-if="i !== routes.length-1">&nbsp;/&nbsp;</span>
     </n-el>
   </TransitionGroup>
 </template>
 
 <style lang="scss">
-.split:not(:first-child)::before {
-   content: '/';
-   padding-right:0.6em;
+.bg{
+ background-color: #FAFAFC;
+ width: 100%;
+ height: 22px;
 }
-
 .list-move,
 .list-enter-active,
 .list-leave-active {
   transition: all 0.3s ease;
 }
 
-.list-enter-from,.list-leave-to {
+.list-enter-from,
+.list-leave-to {
   opacity: 0;
   transform: translateX(-30px);
 }

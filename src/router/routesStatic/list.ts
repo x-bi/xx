@@ -1,0 +1,46 @@
+export const routes = {
+  order:3,
+  routes: [
+    {
+      name: 'list',
+      path: '/list',
+      title: '列表页',
+      // requiresAuth: true,
+      icon: 'icon-park-outline:list-two',
+      menuType: 'dir',
+      componentPath: null,
+      id: '10',
+      pid: null,
+    },
+    {
+      name: 'commonList',
+      path: '/list/commonList',
+      title: '常用列表',
+      // requiresAuth: true,
+      icon: 'icon-park-outline:list-view',
+      componentPath: '/demo/list/commonList/index.vue',
+      id: '11',
+      pid: '10',
+    },
+    {
+      name: 'cardList',
+      path: '/list/cardList',
+      title: '卡片列表',
+      // requiresAuth: true,
+      icon: 'icon-park-outline:view-grid-list',
+      componentPath: '/demo/list/cardList/index.vue',
+      id: '12',
+      pid: '10',
+    },
+    {
+      name: 'draggableList',
+      path: '/list/draggableList',
+      title: '拖拽列表',
+      requiresAuth: true,
+      icon: 'icon-park-outline:menu-fold',
+      componentPath: '/demo/list/draggableList/index.vue',
+      id: '44',
+      pid: '10',
+    },
+  ]
+ }

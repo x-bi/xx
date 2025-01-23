@@ -84,6 +84,7 @@ export function useEcharts(ref: string, chartOptions: Ref<ECOption>) {
     if (!width || !height)
       return
 
+
     const chartTheme = appStore.colorMode ? 'dark' : 'light'
     await nextTick()
     if (el) {

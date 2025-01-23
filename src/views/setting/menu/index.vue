@@ -9,7 +9,7 @@ import TableModal from './components/TableModal.vue'
 
 const { bool: loading, setTrue: startLoading, setFalse: endLoading } = useBoolean(false)
 
-function deleteData(id: number) {
+function deleteData(id: string) {
   window.$message.success(`删除菜单id:${id}`)
 }
 
@@ -121,6 +121,7 @@ onMounted(() => {
 async function getAllRoutes() {
   startLoading()
   const { data } = await fetchAllRoutes()
+
   tableData.value = arrayToTree(data)
   endLoading()
 }

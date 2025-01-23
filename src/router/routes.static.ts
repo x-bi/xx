@@ -173,16 +173,7 @@ export const staticRoutes: AppRoute.RowRoute[] = [
     id: 18,
     pid: 13,
   },
-  {
-    name: 'editorMd',
-    path: '/demo/editor/md',
-    title: 'MarkDown',
-    requiresAuth: true,
-    icon: 'ri:markdown-line',
-    componentPath: '/demo/editor/md/index.vue',
-    id: 19,
-    pid: 18,
-  },
+
   {
     name: 'editorRich',
     path: '/demo/editor/rich',
